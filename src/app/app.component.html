@@ -1,1 +1,38 @@
-<app-lista></app-lista>
+<mat-toolbar color="primary">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="menuItemClicked('Item 1')">Item 1</button>
+        <button mat-menu-item (click)="menuItemClicked('Item 2')">Item 2</button>
+        <button mat-menu-item (click)="menuItemClicked('Item 3')">Item 3</button>
+    </mat-menu>
+</mat-toolbar>
+
+<mat-list>
+    <mat-list-item>
+      <h3 mat-line>Item 1</h3>
+      <p mat-line>Description for Item 1</p>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  
+    <mat-list-item>
+      <h3 mat-line>Item 2</h3>
+      <p mat-line>Description for Item 2</p>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  
+    <mat-list-item>
+      <h3 mat-line>Item 3</h3>
+      <p mat-line>Description for Item 3</p>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-card>
+    <img mat-card-image src="https://i.scdn.co/image/b040846ceba13c3e9c125d68389491094e7f2982" alt="Descrição da imagem">
+    <mat-card-content>
+      <h2>Título do Card</h2>
+      <p>Conteúdo do card. Você pode adicionar texto, botões ou outros elementos aqui.</p>
+    </mat-card-content>
+  </mat-card>

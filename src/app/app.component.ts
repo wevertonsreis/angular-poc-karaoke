@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-test';
+  
+  menuItemClicked(item: string): void {
+    console.log(`Clicou no ${item}`);
+    // Adicione aqui a lógica para lidar com o clique do menu
+  }
+  
 }
