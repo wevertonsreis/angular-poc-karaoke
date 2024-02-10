@@ -16,6 +16,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MenuInferiorComponent } from './menu-inferior/menu-inferior.component';
 import { MenuInferiorModule } from './menu-inferior/menu-inferior.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatTabsModule,
     MenuInferiorModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

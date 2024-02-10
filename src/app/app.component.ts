@@ -8,6 +8,7 @@ import { MusicasService } from './services/musicas.service';
 })
 export class AppComponent {
   
+  displayedColumns: string[] = ['codigo', 'interprete', 'titulo', 'inicio_letra'];
   dados: any;
 
   constructor(private musicaService : MusicasService){};
