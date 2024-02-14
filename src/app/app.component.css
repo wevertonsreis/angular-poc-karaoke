@@ -9,3 +9,14 @@
 table {
     width: 100%;
 }
+
+.tabela-titulo-musica {
+    text-transform: lowercase;
+}
+
+.carregando {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+}

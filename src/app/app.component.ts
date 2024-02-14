@@ -10,7 +10,7 @@ import { take } from 'rxjs';
 })
 export class AppComponent {
   
-  displayedColumns: string[] = ['codigo', 'interprete', 'titulo'];
+  displayedColumns: string[] = ['codigo', 'interprete_titulo'];
 
   dados: any;
   dados_da_tabela = new MatTableDataSource();

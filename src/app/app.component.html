@@ -14,18 +14,16 @@
 <table mat-table [dataSource]="dados_da_tabela" class="mat-elevation-z8">
 
   <ng-container matColumnDef="codigo">
-    <th mat-header-cell *matHeaderCellDef> Còdigo </th>
+    <th mat-header-cell *matHeaderCellDef> Código </th>
     <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="interprete">
-    <th mat-header-cell *matHeaderCellDef> Interprete </th>
-    <td mat-cell *matCellDef="let element"> {{element.interprete}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="titulo">
-    <th mat-header-cell *matHeaderCellDef> Título </th>
-    <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
+  <ng-container matColumnDef="interprete_titulo">
+    <th mat-header-cell *matHeaderCellDef> Interprete / Título </th>
+    <td mat-cell *matCellDef="let element"> 
+      <span>{{element.interprete}}</span> <br>
+      <span class="tabela-titulo-musica">{{element.titulo}}</span>
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -33,4 +31,6 @@
 
 </table>
 
-<mat-spinner *ngIf="exibir_carregando"></mat-spinner>
+<div *ngIf="exibir_carregando" class="carregando">
+  <mat-spinner></mat-spinner>
+</div>
