@@ -1,33 +1,36 @@
 <mat-toolbar color="primary">
   <span>Karaoke Músicas</span>
+  <span class="example-spacer"></span>
+  <button (click)="controlarPesquisa()" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>search</mat-icon>
+  </button>
 </mat-toolbar>
 
-<table mat-table [dataSource]="dados?.musicas" class="mat-elevation-z8">
+<mat-form-field *ngIf="pesquisa_habilitada" class="example-form-field">
+  <mat-label>Pesquisar</mat-label>
+  <input matInput (keyup)="aplicarFiltro($event)" placeholder="Ex. roberto">
+</mat-form-field>
 
-  <!-- Position Column -->
+<table mat-table [dataSource]="dados_da_tabela" class="mat-elevation-z8">
+
   <ng-container matColumnDef="codigo">
     <th mat-header-cell *matHeaderCellDef> Còdigo </th>
     <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
   </ng-container>
 
-  <!-- Name Column -->
   <ng-container matColumnDef="interprete">
     <th mat-header-cell *matHeaderCellDef> Interprete </th>
     <td mat-cell *matCellDef="let element"> {{element.interprete}} </td>
   </ng-container>
 
-  <!-- Weight Column -->
   <ng-container matColumnDef="titulo">
     <th mat-header-cell *matHeaderCellDef> Título </th>
     <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
   </ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="inicio_letra">
-    <th mat-header-cell *matHeaderCellDef> Inicio Letra </th>
-    <td mat-cell *matCellDef="let element"> {{element.inicio_letra}} </td>
-  </ng-container>
-
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
 </table>
+
+<mat-spinner *ngIf="exibir_carregando"></mat-spinner>
