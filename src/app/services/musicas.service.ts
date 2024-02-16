@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ListaMusicas } from '../models/lista-musicas';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,8 @@ export class MusicasService {
 
   constructor(private httpClient: HttpClient) {}
 
-  // Exemplo de uma solicitação HTTP GET
-  obterDados(): Observable<any> {
-    return this.httpClient.get(this.apiUrl);
+  obterDados(): Observable<ListaMusicas> {
+    return this.httpClient.get<ListaMusicas>(this.apiUrl);
   }
 
 }

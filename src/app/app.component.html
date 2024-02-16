@@ -6,12 +6,12 @@
   </button>
 </mat-toolbar>
 
-<mat-form-field *ngIf="pesquisa_habilitada" class="example-form-field">
+<mat-form-field *ngIf="pesquisaHabilitada" class="example-form-field">
   <mat-label>Pesquisar</mat-label>
-  <input matInput (keyup)="aplicarFiltro($event)" placeholder="Ex. roberto">
+  <input matInput (keyup)="aplicarFiltro($event)" placeholder="Ex. roberto" id="campoPesquisa">
 </mat-form-field>
 
-<table mat-table [dataSource]="dados_da_tabela" class="mat-elevation-z8">
+<table mat-table [dataSource]="dadosTabela" class="mat-elevation-z8">
 
   <ng-container matColumnDef="codigo">
     <th mat-header-cell *matHeaderCellDef> Código </th>
@@ -26,11 +26,11 @@
     </td>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-header-row *matHeaderRowDef="colunasExibidas"></tr>
+  <tr mat-row *matRowDef="let row; columns: colunasExibidas;"></tr>
 
 </table>
 
-<div *ngIf="exibir_carregando" class="carregando">
+<div *ngIf="exibirCarregando" class="carregando">
   <mat-spinner></mat-spinner>
 </div>

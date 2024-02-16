@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { MusicasService } from './services/musicas.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { take } from 'rxjs';
+import { ListaMusicas } from './models/lista-musicas';
+import { Musica } from './models/musica';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +11,16 @@ import { take } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
-  displayedColumns: string[] = ['codigo', 'interprete_titulo'];
 
-  dados: any;
-  dados_da_tabela = new MatTableDataSource();
-  pesquisa_habilitada = false;
-  exibir_carregando = true;
+  dados!: ListaMusicas;
+  colunasExibidas: string[] = ['codigo', 'interprete_titulo'];
+  dadosTabela = new MatTableDataSource<Musica>();
+  pesquisaHabilitada = false;
+  exibirCarregando = true;
 
-  constructor(private musicaService : MusicasService){};
+  constructor(
+    private musicaService : MusicasService
+  ) {};
 
   ngOnInit(): void {
     this.musicaService.obterDados()
@@ -25,10 +28,8 @@ export class AppComponent {
       .subscribe({
         next: (response) => {
           this.dados = response;
-          console.log('Dados recebidos:', this.dados);
-          this.exibir_carregando = false;
-          this.dados_da_tabela = new MatTableDataSource(this.dados.musicas);
-          console.info('ngOnInit response', this.dados_da_tabela);
+          this.exibirCarregando = false;
+          this.dadosTabela = new MatTableDataSource(this.dados.musicas);
         },
         error(err) {
           console.error(err);
@@ -38,11 +39,12 @@ export class AppComponent {
   }
   
   controlarPesquisa(): void {
-    this.pesquisa_habilitada = !this.pesquisa_habilitada;
+    this.pesquisaHabilitada = !this.pesquisaHabilitada;
 
-    if (!this.pesquisa_habilitada) {
-      this.dados_da_tabela.filter = '';
-    }
+    if (!this.pesquisaHabilitada) {
+      this.dadosTabela.filter = '';
+    } 
+
   }
 
   aplicarFiltro(event: Event) {
@@ -52,7 +54,7 @@ export class AppComponent {
       return;
     } 
 
-    this.dados_da_tabela.filter = valor_filtrado.trim().toLowerCase();
+    this.dadosTabela.filter = valor_filtrado.trim().toLowerCase();
   }
 
 }
